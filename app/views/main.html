@@ -1,0 +1,25 @@
+<form class="form-horizontal">
+<fieldset>
+
+<!-- Form Name -->
+<legend>
+  BrewTimer <i class="icon ion-ios-pint-outline"></i>
+</legend>
+
+<!-- Text input-->
+<div class="form-group" ng-repeat="ingredientEntry in ingredientEntries">
+  <div class="col-md-4">
+    <input class="form-control" type="number" name="{{ingredientEntry.time}}"
+    value="{{ingredientEntry.defaultTime}}" min="0" max="60">
+  </div>
+  <div class="col-md-4">
+    <input id="textinput" name="{{ingredientEntry.ingredient}}" type="text" placeholder="Add an ingredient..." class="form-control input-md">
+  </div>
+</div>
+</fieldset>
+</form>
+
+<timer countdown="3600" max-time-unit="'minute'" interval="1000">
+{{mminutes}}:{{sseconds}}
+</timer></br>
+<button type="button" class="btn btn btn-primary">Start</button>
