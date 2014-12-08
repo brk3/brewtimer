@@ -1,16 +1,20 @@
-<form class="form-horizontal">
+<form novalidate class="form-horizontal">
   <fieldset>
     <legend>
       BrewTimer <i class="icon ion-ios-pint-outline"></i>
     </legend>
-    <div class="form-group" ng-repeat="ingredientEntry in ingredientEntries">
-      <div class="col-md-4">
-        <input class="form-control" type="number" name="{{ingredientEntry.time}}"
-          value="{{ingredientEntry.defaultTime}}" min="0" max="60">
+    <div class="form-group" ng-repeat="brewAddition in brewAdditions">
+      <div class="col-md-2">
+        <input ng-model="brewAddition.mins" class="form-control" type="number" name="timeInput"
+          value="{{brewAddition.mins}}" min="0" max="60">
       </div>
-      <div class="col-md-4">
-        <input id="textinput" name="{{ingredientEntry.ingredient}}" type="text"
-          placeholder="Add an ingredient..." class="form-control input-md">
+      <div class="col-md-2">
+        <input ng-model="brewAddition.amount" id="textinput" name="ingredientAmountInput"
+          type="number" step="any" class="form-control input-md">
+      </div>
+      <div class="col-md-6">
+        <input ng-model="brewAddition.ingredient" id="textinput" name="ingredientInput"
+          type="text" class="form-control input-md" placeholder="Add an ingredient...">
       </div>
     </div>
   </fieldset>

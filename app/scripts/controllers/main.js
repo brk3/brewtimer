@@ -3,21 +3,16 @@
 angular.module('brewtimerApp')
   .controller('MainCtrl', function ($scope) {
 
-    $scope.ingredientEntries = [
+    $scope.brewAdditions = [
       {
-          'time': 'time1',
-          'defaultTime': '60',
-          'ingredient': 'ingredient1',
+          'ingredient': '',
+          'mins': 60,
+          'amount': 28.34,
       },
       {
-          'time': 'time2',
-          'defaultTime': '10',
-          'ingredient': 'ingredient2',
-      },
-      {
-          'time': 'time3',
-          'defaultTime': '0',
-          'ingredient': 'ingredient3',
+          'ingredient': '',
+          'mins': 10,
+          'amount': 28.34,
       }
     ];
 
@@ -34,13 +29,12 @@ angular.module('brewtimerApp')
     };
 
     $scope.$on('timer-tick', function (event, args) {
-      console.log(' - event.name = '
-        + event.name
-        + ', timeoutId = '
-        + args.timeoutId
-        + ', millis = '
-        + args.millis / 1000
-        +'\n'
-        );
+      var curTime_s = args.millis / 1000;
+      $scope.brewAdditions.forEach(function(item) {
+        if (item.mins * 60 === curTime_s) {
+          console.log('Time to add ' + item.ingredient);
+        }
+      });
     });
+
   }, ['timer']);
