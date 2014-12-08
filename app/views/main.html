@@ -3,6 +3,7 @@
     <legend>
       BrewTimer <i class="icon ion-ios-pint-outline"></i>
     </legend>
+    <!--TODO: add labels-->
     <div class="form-group" ng-repeat="brewAddition in brewAdditions">
       <div class="col-md-2">
         <input ng-model="brewAddition.mins" class="form-control" type="number" name="timeInput"
@@ -19,6 +20,12 @@
     </div>
   </fieldset>
 </form>
+
+<button type="button" ng-click="addBrewAddition()" class="btn btn-default">
+  <i class="icon ion-plus-round"></i>
+</button>
+
+<br>
 
 <timer autostart="false" countdown="3600" max-time-unit="'minute'" interval="1000">
   {{mminutes}}:{{sseconds}}

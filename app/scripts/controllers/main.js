@@ -37,4 +37,12 @@ angular.module('brewtimerApp')
       });
     });
 
+    $scope.addBrewAddition = function() {
+      $scope.brewAdditions.push({
+          'ingredient': '',
+          'mins': 0,
+          'amount': 28.34,
+      });
+    };
+
   }, ['timer']);
