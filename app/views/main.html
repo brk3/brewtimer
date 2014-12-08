@@ -1,7 +1,8 @@
 <div class="alert alert-info" role="alert" ng-show="showAlert" ng-click="onAlertClick()">
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
   <span class="sr-only">Alarm:</span>
-  Add {{nextAdditionAmount}} of {{nextAddition}}
+  <b>Add {{nextAddition.amount}}{{nextAddition.unit}} of {{nextAddition.ingredient}}</b>
+  <i class="pull-right">(Click to dismiss)</i>
 </div>
 
 <form novalidate class="form-horizontal">
@@ -25,6 +26,7 @@
             <ul class="dropdown-menu dropdown-menu-right" role="menu">
               <li><a ng-click="brewAddition.unit = 'g'">g</a></li>
               <li><a ng-click="brewAddition.unit = 'lb'">lb</a></li>
+              <li><a ng-click="brewAddition.unit = 'tsp'">tsp</a></li>
             </ul>
           </div><!-- /btn-group -->
         </div><!-- /input-group -->

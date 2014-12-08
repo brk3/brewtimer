@@ -39,8 +39,7 @@ angular.module('brewtimerApp')
       $scope.brewAdditions.forEach(function(item) {
         if (item.mins * 60 === curTime_s) {
           $scope.alarm.play();
-          $scope.nextAddition = item.ingredient;
-          $scope.nextAdditionAmount = item.amount;
+          $scope.nextAddition = item;
           $scope.showAlert = true;
         }
       });
