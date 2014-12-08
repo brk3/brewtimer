@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('brewtimerApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, ngAudio) {
+
+    $scope.alarm = ngAudio.load('sounds/alarm.mp3');
+    $scope.alarm.loop = true;
+    $scope.showAlert = false;
 
     $scope.brewAdditions = [
       {
@@ -32,7 +36,10 @@ angular.module('brewtimerApp')
       var curTime_s = args.millis / 1000;
       $scope.brewAdditions.forEach(function(item) {
         if (item.mins * 60 === curTime_s) {
-          console.log('Time to add ' + item.ingredient);
+          $scope.alarm.play();
+          $scope.nextAddition = item.ingredient;
+          $scope.nextAdditionAmount = item.amount;
+          $scope.showAlert = true;
         }
       });
     });
@@ -45,4 +52,9 @@ angular.module('brewtimerApp')
       });
     };
 
-  }, ['timer']);
+    $scope.onAlertClick = function() {
+      $scope.alarm.stop();
+      $scope.showAlert = false;
+    };
+
+  });

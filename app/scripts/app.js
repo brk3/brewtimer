@@ -6,7 +6,8 @@ angular
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'timer'
+    'timer',
+    'ngAudio'
   ])
   .config(function ($routeProvider) {
     $routeProvider
