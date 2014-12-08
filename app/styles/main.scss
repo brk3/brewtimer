@@ -93,3 +93,17 @@ body {
         border-bottom: 0;
     }
 }
+
+/* Begin customisations */
+legend {
+  font-size: 25px;
+  i {
+    font-size: 35px;
+  }
+}
+
+timer {
+  vertical-align: middle;
+  font-size: 30px;
+  margin-left: 20px;
+}

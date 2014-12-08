@@ -15,11 +15,21 @@
         <input ng-model="brewAddition.mins" class="form-control" type="number" name="timeInput"
           value="{{brewAddition.mins}}" min="0" max="60">
       </div>
-      <div class="col-md-2">
-        <input ng-model="brewAddition.amount" id="textinput" name="ingredientAmountInput"
-          type="number" step="any" class="form-control input-md">
+      <div class="col-md-3">
+        <div class="input-group">
+          <input ng-model="brewAddition.amount" id="textInput" name=ingredientAmountInput"
+            type="number" step="any" class="form-control">
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+              aria-expanded="false">{{brewAddition.unit}}<span class="caret"></span></button>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+              <li><a ng-click="brewAddition.unit = 'g'">g</a></li>
+              <li><a ng-click="brewAddition.unit = 'lb'">lb</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+        </div><!-- /input-group -->
       </div>
-      <div class="col-md-6">
+      <div class="col-md-7">
         <input ng-model="brewAddition.ingredient" id="textinput" name="ingredientInput"
           type="text" class="form-control input-md" placeholder="Add an ingredient...">
       </div>
@@ -27,17 +37,18 @@
   </fieldset>
 </form>
 
-<button type="button" ng-click="addBrewAddition()" class="btn btn-default">
+<button id="addAddition" type="button" ng-click="addBrewAddition()"
+    class="btn btn-default pull-right">
   <i class="icon ion-plus-round"></i>
 </button>
 
 <br>
 
-<timer autostart="false" countdown="3600" max-time-unit="'minute'" interval="1000">
-  {{mminutes}}:{{sseconds}}
-</timer></br>
-
 <button type="button" ng-click="onTimerButtonClick()" class="btn"
     ng-class="timerRunning ? 'btn-primary' : 'btn-primary'">
   {{timerRunning ? 'Pause' : 'Start'}}
 </button>
+
+<timer autostart="false" countdown="3600" max-time-unit="'minute'" interval="1000">
+  {{mminutes}}:{{sseconds}}
+</timer>

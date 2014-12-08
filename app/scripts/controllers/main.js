@@ -12,11 +12,13 @@ angular.module('brewtimerApp')
           'ingredient': '',
           'mins': 60,
           'amount': 28.34,
+          'unit': 'g'
       },
       {
           'ingredient': '',
           'mins': 10,
           'amount': 28.34,
+          'unit': 'g'
       }
     ];
 
@@ -49,6 +51,7 @@ angular.module('brewtimerApp')
           'ingredient': '',
           'mins': 0,
           'amount': 28.34,
+          'unit': 'g'
       });
     };
 
