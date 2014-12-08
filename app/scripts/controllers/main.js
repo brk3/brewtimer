@@ -2,6 +2,7 @@
 
 angular.module('brewtimerApp')
   .controller('MainCtrl', function ($scope) {
+
     $scope.ingredientEntries = [
       {
           'time': 'time1',
@@ -19,4 +20,27 @@ angular.module('brewtimerApp')
           'ingredient': 'ingredient3',
       }
     ];
-  });
+
+    $scope.timerRunning = false;
+
+    $scope.onTimerButtonClick = function () {
+      if ($scope.timerRunning) {
+        $scope.$broadcast('timer-stop');
+        $scope.timerRunning = false;
+      } else {
+        $scope.$broadcast('timer-start');
+        $scope.timerRunning = true;
+      }
+    };
+
+    $scope.$on('timer-tick', function (event, args) {
+      console.log(' - event.name = '
+        + event.name
+        + ', timeoutId = '
+        + args.timeoutId
+        + ', millis = '
+        + args.millis / 1000
+        +'\n'
+        );
+    });
+  }, ['timer']);
