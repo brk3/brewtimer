@@ -18,14 +18,20 @@ angular.module('brewtimerApp')
       {
           'ingredient': '',
           'mins': 60,
-          'amount': 28.34,
+          'amount': 14,
           'unit': 'g'
       },
       {
           'ingredient': '',
           'mins': 10,
-          'amount': 28.34,
+          'amount': 28,
           'unit': 'g'
+      },
+      {
+        'ingredient': '',
+        'mins': 0,
+        'amount': 28,
+        'unit': 'g'
       }
     ];
 
@@ -40,6 +46,11 @@ angular.module('brewtimerApp')
         $scope.timerRunning = true;
       }
     };
+
+    //$scope.onResetButtonClick = function() {
+        //$scope.$broadcast('timer-clear');
+        //$scope.timerRunning = false;
+    //};
 
     $scope.$on('timer-tick', function (event, args) {
       var curTimeSeconds = args.millis / 1000;
@@ -61,9 +72,12 @@ angular.module('brewtimerApp')
       });
     };
 
+    $scope.removeBrewAddition = function() {
+      $scope.brewAdditions.pop();
+    };
+
     $scope.onAlertClick = function() {
       $scope.alarm.stop();
       $scope.showAlert = false;
     };
-
   });

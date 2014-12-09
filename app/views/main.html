@@ -1,3 +1,5 @@
+<a href="https://github.com/brk3/brewtimer" class="ribbon bg-navy hidden-xs">Fork me on GitHub</a>
+
 <div class="alert alert-info" role="alert" ng-show="showAlert" ng-click="onAlertClick()">
   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
   <span class="sr-only">Alarm:</span>
@@ -10,13 +12,12 @@
     <legend>
       BrewTimer <i class="icon ion-ios-pint-outline"></i>
     </legend>
-    <!--TODO: add labels-->
     <div class="form-group" ng-repeat="brewAddition in brewAdditions">
-      <div class="col-md-2">
+      <div class="col-xs-3 col-md-2">
         <input ng-model="brewAddition.mins" class="form-control" type="number" name="timeInput"
           value="{{brewAddition.mins}}" min="0" max="60" required>
       </div>
-      <div class="col-md-3">
+      <div class="col-xs-4 col-md-3">
         <div class="input-group">
           <input ng-model="brewAddition.amount" id="textInput" name=ingredientAmountInput"
             type="number" step="any" class="form-control" required>
@@ -31,26 +32,38 @@
           </div><!-- /btn-group -->
         </div><!-- /input-group -->
       </div>
-      <div class="col-md-7">
+      <div class="col-xs-10 col-md-7">
         <input ng-model="brewAddition.ingredient" id="textinput" name="ingredientInput"
-          type="text" class="form-control input-md" placeholder="Add an ingredient..." required>
+          type="text" class="form-control input-md .col-md-offset-1" placeholder="Add an ingredient..." required>
       </div>
     </div>
   </fieldset>
 </form>
 
 <button id="addAddition" type="button" ng-click="addBrewAddition()"
-    class="btn btn-default pull-right">
+    class="btn btn-sm btn-default pull-right">
   <i class="icon ion-plus-round"></i>
+</button>
+<button id="removeAddition" type="button" ng-click="removeBrewAddition()"
+    class="btn btn-sm btn-default pull-right">
+  <i class="icon ion-minus-round"></i>
 </button>
 
 <br>
 
 <button type="button" ng-click="onTimerButtonClick()" class="btn"
-    ng-class="timerRunning ? 'btn-primary' : 'btn-primary'" ng-disabled="additionForm.$invalid">
+    ng-class="timerRunning ? 'btn-primary' : 'btn-primary'" ng-disabled="additionForm.$invalid ||
+    (brewAdditions.length == 0)">
   {{timerRunning ? 'Pause' : 'Start'}}
 </button>
+<!--<button type="button" ng-click="onResetButtonClick()" class="btn" ng-class="btn-primary" >-->
+  <!--Reset-->
+<!--</button>-->
 
 <timer autostart="false" countdown="3600" max-time-unit="'minute'" interval="1000">
   {{mminutes}}:{{sseconds}}
 </timer>
+
+<div class="footer">
+  <small>by <a href="https://twitter.com/brk3">@brk3</a></small>
+</div>
