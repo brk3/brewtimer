@@ -5,7 +5,7 @@
   <i class="pull-right">(Click to dismiss)</i>
 </div>
 
-<form novalidate class="form-horizontal">
+<form novalidate name="additionForm" class="form-horizontal">
   <fieldset>
     <legend>
       BrewTimer <i class="icon ion-ios-pint-outline"></i>
@@ -14,12 +14,12 @@
     <div class="form-group" ng-repeat="brewAddition in brewAdditions">
       <div class="col-md-2">
         <input ng-model="brewAddition.mins" class="form-control" type="number" name="timeInput"
-          value="{{brewAddition.mins}}" min="0" max="60">
+          value="{{brewAddition.mins}}" min="0" max="60" required>
       </div>
       <div class="col-md-3">
         <div class="input-group">
           <input ng-model="brewAddition.amount" id="textInput" name=ingredientAmountInput"
-            type="number" step="any" class="form-control">
+            type="number" step="any" class="form-control" required>
           <div class="input-group-btn">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
               aria-expanded="false">{{brewAddition.unit}}<span class="caret"></span></button>
@@ -33,7 +33,7 @@
       </div>
       <div class="col-md-7">
         <input ng-model="brewAddition.ingredient" id="textinput" name="ingredientInput"
-          type="text" class="form-control input-md" placeholder="Add an ingredient...">
+          type="text" class="form-control input-md" placeholder="Add an ingredient..." required>
       </div>
     </div>
   </fieldset>
@@ -47,7 +47,7 @@
 <br>
 
 <button type="button" ng-click="onTimerButtonClick()" class="btn"
-    ng-class="timerRunning ? 'btn-primary' : 'btn-primary'">
+    ng-class="timerRunning ? 'btn-primary' : 'btn-primary'" ng-disabled="additionForm.$invalid">
   {{timerRunning ? 'Pause' : 'Start'}}
 </button>
 
