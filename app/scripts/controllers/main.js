@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * @ngdoc function
+ * @name brewtimerApp.controller:MainCtrl
+ * @description
+ * # MainCtrl
+ * Controller of the brewtimerApp
+ */
 angular.module('brewtimerApp')
   .controller('MainCtrl', function ($scope, ngAudio) {
 
@@ -35,9 +42,9 @@ angular.module('brewtimerApp')
     };
 
     $scope.$on('timer-tick', function (event, args) {
-      var curTime_s = args.millis / 1000;
+      var curTimeSeconds = args.millis / 1000;
       $scope.brewAdditions.forEach(function(item) {
-        if (item.mins * 60 === curTime_s) {
+        if (item.mins * 60 === curTimeSeconds) {
           $scope.alarm.play();
           $scope.nextAddition = item;
           $scope.showAlert = true;
