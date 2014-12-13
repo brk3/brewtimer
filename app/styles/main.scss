@@ -80,8 +80,7 @@ legend {
 
 timer {
   vertical-align: middle;
-  font-size: 30px;
-  margin-left: 20px;
+  font-size: 40px;
 }
 
 button#removeAddition {
@@ -111,4 +110,14 @@ button#removeAddition {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+}
+
+.reducePadding {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.form-group {
+  padding-left: 8px;
+  padding-right: 8px;
 }
