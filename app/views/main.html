@@ -13,11 +13,11 @@
       BrewTimer <i class="icon ion-ios-pint-outline"></i>
     </legend>
     <div class="form-group" ng-repeat="brewAddition in brewAdditions">
-      <div class="col-xs-3 reducePadding">
+      <div class="col-xs-3 col-md-2 reducePadding">
         <input ng-model="brewAddition.mins" class="form-control" type="number" name="timeInput"
           value="{{brewAddition.mins}}" min="0" max="60" required>
       </div>
-      <div class="col-xs-4 reducePadding">
+      <div class="col-xs-4 col-md-3 reducePadding">
         <div class="input-group">
           <input ng-model="brewAddition.amount" id="textInput" name=ingredientAmountInput"
             type="number" step="any" class="form-control" required>
@@ -32,7 +32,7 @@
           </div><!-- /btn-group -->
         </div><!-- /input-group -->
       </div>
-      <div class="col-xs-5 reducePadding">
+      <div class="col-xs-5 col-md-7 reducePadding">
         <input ng-model="brewAddition.ingredient" id="textinput" name="ingredientInput"
           type="text" class="form-control"
           placeholder="Add an ingredient..." required>
@@ -43,18 +43,18 @@
 
 <button id="addAddition" type="button" ng-click="addBrewAddition()"
     class="btn btn-sm btn-default pull-right">
-  <i class="icon ion-plus-round"></i>
+  <i class="glyphicon glyphicon-plus"></i>
 </button>
 <button id="removeAddition" type="button" ng-click="removeBrewAddition()"
     class="btn btn-sm btn-default pull-right">
-  <i class="icon ion-minus-round"></i>
+  <i class="glyphicon glyphicon-minus"></i>
 </button>
 
 <br><br>
 
 <div class="row">
   <timer autostart="false" countdown="3600" max-time-unit="'minute'" interval="1000"
-      class="col-xs-3 col-xs-offset-4 col-md-offset-5">
+      class="col-xs-3 col-xs-offset-4 col-md-offset-5" ng-style="timerStyle">
     {{mminutes}}:{{sseconds}}
   </timer>
   <button type="button" ng-click="onTimerButtonClick()" class="btn col-md-4 col-md-offset-4

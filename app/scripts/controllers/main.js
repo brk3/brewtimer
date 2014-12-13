@@ -86,7 +86,7 @@ angular.module('brewtimerApp')
     $scope.brewAdditions.push({
         'ingredient': '',
         'mins': 0,
-        'amount': 28.34,
+        'amount': 28,
         'unit': 'g'
     });
   };
