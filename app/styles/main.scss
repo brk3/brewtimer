@@ -121,3 +121,13 @@ button#removeAddition {
   padding-left: 8px;
   padding-right: 8px;
 }
+
+.form-group.ng-enter {
+  -webkit-animation: zoomIn 0.2s;
+  animation: zoomIn 0.2s;
+}
+
+.form-group.ng-leave {
+  -webkit-animation: zoomOut 0.2s;
+  animation: zoomOut 0.2s;
+}
