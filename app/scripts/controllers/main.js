@@ -10,6 +10,10 @@
 angular.module('brewtimerApp')
     .controller('MainCtrl', function ($scope, ngAudio) {
 
+  $scope.appVersion = 0.1;
+
+  $scope.timerStyle = {'color':'black'}
+
   $scope.alarm = ngAudio.load('sounds/alarm.mp3');
   $scope.alarm.loop = true;
 
@@ -49,6 +53,7 @@ angular.module('brewtimerApp')
       $scope.alarm.stop();
       $scope.showAlert = false;
       $scope.timerButtonText = 'Start';
+      $scope.timerStyle = {'color':'black'}
       // NOTE(bourke): hacky way to reset timer
       $scope.$broadcast('timer-stop');
       $scope.$broadcast('timer-start');
@@ -66,6 +71,8 @@ angular.module('brewtimerApp')
       }
       if (curTimeSeconds === 0) {
         $scope.timerButtonText = 'Stop';
+        $scope.timerStyle = {'color':'red'}
+        $scope.alarm.play();
       }
     });
   });
