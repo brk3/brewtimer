@@ -53,15 +53,15 @@
 <br><br>
 
 <div class="row">
-<timer autostart="false" countdown="3600" max-time-unit="'minute'" interval="1000"
-    class="col-xs-3 col-xs-offset-4 col-md-offset-5">
-  {{mminutes}}:{{sseconds}}
-</timer>
-<button type="button" ng-click="onTimerButtonClick()" class="btn col-md-4 col-md-offset-4 col-xs-8 col-xs-offset-2"
-    ng-class="timerRunning ? 'btn-primary' : 'btn-primary'" ng-disabled="additionForm.$invalid ||
-    (brewAdditions.length == 0)">
-  {{timerRunning ? 'Pause' : 'Start'}}
-</button>
+  <timer autostart="false" countdown="3600" max-time-unit="'minute'" interval="1000"
+      class="col-xs-3 col-xs-offset-4 col-md-offset-5">
+    {{mminutes}}:{{sseconds}}
+  </timer>
+  <button type="button" ng-click="onTimerButtonClick()" class="btn col-md-4 col-md-offset-4
+      col-xs-8 col-xs-offset-2" ng-class="timerRunning ? 'btn-primary' : 'btn-primary'"
+      ng-disabled="additionForm.$invalid || (brewAdditions.length == 0)">
+    {{timerButtonText}}
+  </button>
 </div>
 
 <div class="footer pull-right">
