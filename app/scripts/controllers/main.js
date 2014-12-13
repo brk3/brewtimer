@@ -45,6 +45,24 @@ angular.module('brewtimerApp')
     }
   ];
 
+  // Instantiate the bloodhound suggestion engine
+  var sampleAdditions = new Bloodhound({
+    datumTokenizer: function(d) { return Bloodhound.tokenizers.whitespace(d.addition); },
+      queryTokenizer: Bloodhound.tokenizers.whitespace,
+    local: allAdditions });
+
+  sampleAdditions.initialize();
+
+  // Typeahead options object
+  $scope.ingredientInputOptions = {
+    highlight: true
+  };
+
+  $scope.ingredientInputData = {
+    displayKey: 'addition',
+    source: sampleAdditions.ttAdapter()
+  };
+
   $scope.onTimerButtonClick = function () {
     if ($scope.timerButtonText === 'Pause') {
       $scope.$broadcast('timer-stop');

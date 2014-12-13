@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngAudio',
-    'timer'
+    'timer',
+    'siyfion.sfTypeahead'
   ])
   .config(function ($routeProvider) {
     $routeProvider

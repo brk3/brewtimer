@@ -16,7 +16,7 @@
         ng-repeat="brewAddition in brewAdditions">
       <div class="col-xs-3 col-md-2 reducePadding">
         <input ng-model="brewAddition.mins" class="form-control" type="number" name="timeInput"
-          value="{{brewAddition.mins}}" min="0" max="60" required>
+          value="{{brewAddition.mins}}" min="0" max="60" step="1" required>
       </div>
       <div class="col-xs-4 col-md-3 reducePadding">
         <div class="input-group">
@@ -35,8 +35,8 @@
       </div>
       <div class="col-xs-5 col-md-7 reducePadding">
         <input ng-model="brewAddition.ingredient" id="textinput" name="ingredientInput"
-          type="text" class="form-control"
-          placeholder="Add an ingredient..." required>
+          type="text" class="form-control sf-typeahead" placeholder="Add an ingredient..."
+          options="ingredientInputOptions" datasets="ingredientInputData" required>
       </div>
     </div><!-- /form-group -->
   </fieldset>
@@ -54,7 +54,7 @@
 <br><br>
 
 <div class="row">
-  <timer autostart="false" countdown="60" max-time-unit="'minute'" interval="1000"
+  <timer autostart="false" countdown="3600" max-time-unit="'minute'" interval="1000"
       class="col-xs-3 col-xs-offset-4 col-md-offset-5" ng-style="timerStyle">
     {{mminutes}}:{{sseconds}}
   </timer>
