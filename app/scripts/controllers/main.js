@@ -26,19 +26,22 @@ angular.module('brewtimerApp')
       'ingredient': '',
       'mins': 60,
       'amount': 14,
-      'unit': 'g'
+      'unit': 'g',
+      'added': false
     },
     {
       'ingredient': '',
       'mins': 10,
       'amount': 28,
-      'unit': 'g'
+      'unit': 'g',
+      'added': false,
     },
     {
       'ingredient': '',
       'mins': 0,
       'amount': 28,
-      'unit': 'g'
+      'unit': 'g',
+      'added': false,
     }
   ];
 
@@ -53,12 +56,20 @@ angular.module('brewtimerApp')
       $scope.alarm.stop();
       $scope.showAlert = false;
       $scope.timerButtonText = 'Start';
-      $scope.timerStyle = {'color':'black'}
-      // NOTE(bourke): hacky way to reset timer
-      $scope.$broadcast('timer-stop');
-      $scope.$broadcast('timer-start');
-      $scope.$broadcast('timer-stop');
+      resetTimer();
+      $scope.brewAdditions.forEach(function(item) {
+        item.added = false;
+      });
     }
+  };
+
+  function resetTimer() {
+    // NOTE(bourke): hacky way to reset timer
+    $scope.$broadcast('timer-stop');
+    $scope.$broadcast('timer-start');
+    $scope.$broadcast('timer-stop');
+
+    $scope.timerStyle = {'color':'black'}
   };
 
   $scope.$on('timer-tick', function (event, args) {
@@ -80,6 +91,7 @@ angular.module('brewtimerApp')
   $scope.onAlertClick = function() {
     $scope.alarm.stop();
     $scope.showAlert = false;
+    $scope.nextAddition.added = true;
   };
 
   $scope.addBrewAddition = function() {
