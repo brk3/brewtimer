@@ -81,6 +81,53 @@ describe('Controller: MainCtrl', function () {
         });
       });
     });
+  });
 
+  describe('$scope.onAlertClick', function() {
+    beforeEach(function() {
+      spyOn(scope.alarm, 'stop');
+    });
+
+    describe('when clicked', function() {
+      beforeEach(function() {
+        scope.nextAddition = scope.brewAdditions[0];
+        scope.onAlertClick();
+      });
+
+      it('stops the alarm', function() {
+        expect(scope.alarm.stop).toHaveBeenCalled();
+      });
+
+      it('removes the timer alert', function() {
+        expect(scope.showAlert).toBe(false);
+      });
+
+      it('sets the current next addition\'s added status to true', function() {
+        expect(scope.nextAddition.added).toBe(true);
+      });
+    });
+  });
+
+  describe('$scope.addBrewAddition', function() {
+    describe('when clicked', function() {
+      beforeEach(function() {
+        scope.brewAdditions = [];
+        scope.addBrewAddition();
+      });
+
+      it('updates the list of additions', function() {
+        expect(scope.brewAdditions.length).toBe(1);
+      });
+
+      it('adds a valid addition with sample contents', function() {
+        var sample = {
+          'ingredient': '',
+          'mins': 0,
+          'amount': 28,
+          'unit': 'g'
+        };
+        expect(scope.brewAdditions[0]).toEqual(sample);
+      });
+    });
   });
 });
