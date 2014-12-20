@@ -91,6 +91,10 @@ angular.module('brewtimerApp')
   };
 
   $scope.$on('timer-tick', function (event, args) {
+    $scope.timerTick(event, args);
+  });
+
+  $scope.timerTick = function(event, args) {
     var curTimeSeconds = args.millis / 1000;
     $scope.brewAdditions.forEach(function(item) {
       if (item.mins * 60 === curTimeSeconds) {
@@ -100,11 +104,11 @@ angular.module('brewtimerApp')
       }
       if (curTimeSeconds === 0) {
         $scope.timerButtonText = 'Stop';
-        $scope.timerStyle = {'color':'red'}
+        $scope.timerStyle = {'color':'red'};
         $scope.alarm.play();
       }
     });
-  });
+  };
 
   $scope.onAlertClick = function() {
     $scope.alarm.stop();

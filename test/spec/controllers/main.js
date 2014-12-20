@@ -147,4 +147,55 @@ describe('Controller: MainCtrl', function () {
       });
     });
   });
+
+  describe('$scope.timerTick', function() {
+    beforeEach(function() {
+      spyOn(scope.alarm, 'play');
+    });
+
+    describe('when its time to add an addition', function() {
+      beforeEach(function() {
+        var mockArgs = { 'millis': 3600000 };
+        scope.timerTick({}, mockArgs);
+      });
+
+      it('sounds the alarm', function() {
+        expect(scope.alarm.play).toHaveBeenCalled();
+      });
+
+      it('sets the next addition correctly', function() {
+        var sample = {
+          'ingredient': '',
+          'mins': 60,
+          'amount': 14,
+          'unit': 'g',
+          'added': false
+        };
+        expect(scope.nextAddition).toEqual(sample);
+      });
+
+      it('shows the timer alert', function() {
+        expect(scope.showAlert).toBe(true);
+      });
+    });
+
+    describe('when the time is up', function() {
+      beforeEach(function() {
+        var mockArgs = { 'millis': 0 };
+        scope.timerTick({}, mockArgs);
+      });
+
+      it('sets the timer button text to "Stop"', function() {
+        expect(scope.timerButtonText).toEqual('Stop');
+      });
+
+      it('sets the timer style to red', function() {
+        expect(scope.timerStyle).toEqual({'color':'red'});
+      });
+
+      it('sounds the alarm', function() {
+        expect(scope.alarm.play).toHaveBeenCalled();
+      });
+    });
+  });
 });
