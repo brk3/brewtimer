@@ -130,4 +130,21 @@ describe('Controller: MainCtrl', function () {
       });
     });
   });
+
+  describe('$scope.removeBrewAddition', function() {
+    describe('when clicked', function() {
+      beforeEach(function() {
+        scope.brewAdditions = ['foo', 'bar'];
+        scope.removeBrewAddition();
+      });
+
+      it('updates the list of additions', function() {
+        expect(scope.brewAdditions.length).toBe(1);
+      });
+
+      it('removes the last addition', function() {
+        expect(scope.brewAdditions[0]).toEqual('foo');
+      });
+    });
+  });
 });
