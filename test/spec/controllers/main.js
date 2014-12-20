@@ -4,7 +4,6 @@ describe('Controller: MainCtrl', function () {
 
   // load the controller's module
   beforeEach(module('brewtimerApp'));
-  beforeEach(module('ngAudio'));
 
   var MainCtrl,
     scope;
@@ -21,6 +20,7 @@ describe('Controller: MainCtrl', function () {
     beforeEach(function() {
       spyOn(scope, '$broadcast');
       spyOn(scope, 'resetTimer');
+      spyOn(scope.alarm, 'stop');
     });
 
     describe('when clicked with text "Pause"', function() {
@@ -59,9 +59,9 @@ describe('Controller: MainCtrl', function () {
         scope.onTimerButtonClick();
       });
 
-      //it('stops the alarm', function() {
-        //expect(scope.alarm.stop).toHaveBeenCalled();
-      //});
+      it('stops the alarm', function() {
+        expect(scope.alarm.stop).toHaveBeenCalled();
+      });
 
       it('removes the timer alert', function() {
         expect(scope.showAlert).toBe(false);
