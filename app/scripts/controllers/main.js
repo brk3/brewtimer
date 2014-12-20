@@ -74,14 +74,14 @@ angular.module('brewtimerApp')
       $scope.alarm.stop();
       $scope.showAlert = false;
       $scope.timerButtonText = 'Start';
-      resetTimer();
+      $scope.resetTimer();
       $scope.brewAdditions.forEach(function(item) {
         item.added = false;
       });
     }
   };
 
-  function resetTimer() {
+  $scope.resetTimer = function() {
     // NOTE(bourke): hacky way to reset timer
     $scope.$broadcast('timer-stop');
     $scope.$broadcast('timer-start');
