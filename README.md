@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/brk3/brewtimer.svg?branch=master)](https://travis-ci.org/brk3/brewtimer)
+
 brewtimer
 =========
 
