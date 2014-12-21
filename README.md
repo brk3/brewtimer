@@ -3,7 +3,7 @@
 brewtimer
 =========
 
-Simple responsive web app for timing a brew day
+Simple responsive web app for timing a brew day.  Try it out at https://brk3.github.io/brewtimer
 
 ## Installation
 
